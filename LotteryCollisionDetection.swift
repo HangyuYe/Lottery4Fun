@@ -7,27 +7,22 @@
 
 import Foundation
 
-var excludeArr: [Int] = [0000000, 9999999]
+let targetNum = arc4random_uniform(9999999)
+
 var counter = 0
 
-let targetNum = Int(arc4random_uniform(9999999))
-
-func getRandomNumber() -> Int {
-    let randomNum = arc4random_uniform(9999999)
-    return Int(randomNum)
-}
-
-func collisionDetection(targetNum: Int, randomNumber: Int) -> Bool {
-    if targetNum == randomNumber {
-        print("Find it:\(targetNum)")
+func impactTarget () -> Bool {
+    var myNum = arc4random_uniform(9999999)
+    if myNum == targetNum {
+        print("Using \(counter) times to find the random number \(targetNum)!")
         return true
     } else {
-        print("Did not find it! The random number is:\(randomNumber), and the target number is: \(targetNum)")
+        print("Number \(myNum) is not the target number: \(targetNum), Round: \(counter)")
+        myNum = arc4random_uniform(9999999)
         return false
     }
 }
 
-repeat {
-    collisionDetection(targetNum: targetNum, randomNumber: getRandomNumber())
-} while true
-
+while impactTarget() == false {
+    counter += 1
+}
