@@ -6,7 +6,7 @@ var bulePool: [Int] = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
 
 var counter = 0
 
-func winningNumber() -> [Int] {
+func redNumber() -> [Int] {
     var res: [Int] = []
     var pool = redPool
     var totalNumInPool = totalNumberInPool
@@ -19,6 +19,10 @@ func winningNumber() -> [Int] {
     return res.sorted()
 }
 
+func blueNumber() -> Int {
+  return arc4random_uniform(bulePool(16))
+}
+
 for _ in 1...100 {
-    winningNumber()
+    redNumber()
 }
